@@ -63,3 +63,5 @@ config/*.local.yaml
 
 # Node modules
 node_modules/
+!/ui/nextaio/lib/
+!/ui/nextaio/lib/*.ts
