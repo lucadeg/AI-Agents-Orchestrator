@@ -1,21 +1,11 @@
 import { RemotionHero } from "../components/RemotionHero";
+import { ActionConsole } from "../components/ActionConsole";
+import { BranchCard } from "../components/BranchCard";
 import { managedProjects } from "../lib/projects";
-
-async function loadStatus() {
-  const apiUrl = process.env.NEXT_PUBLIC_ORCHESTRATOR_API_URL || "http://localhost:5000";
-  try {
-    const res = await fetch(`${apiUrl}/api/status`, { cache: "no-store" });
-    if (!res.ok) {
-      return { status: "unreachable" };
-    }
-    return await res.json();
-  } catch {
-    return { status: "offline" };
-  }
-}
+import { fetchRuntimeStatus, getOrchestratorUrl } from "../lib/orchestrator";
 
 export default async function Home() {
-  const runtime = await loadStatus();
+  const runtime = await fetchRuntimeStatus();
 
   return (
     <main className="container">
@@ -29,23 +19,21 @@ export default async function Home() {
       <div className="grid">
         <section className="card">
           <h3>Runtime Orchestrator</h3>
-          <p className="muted">Endpoint: {process.env.NEXT_PUBLIC_ORCHESTRATOR_API_URL || "http://localhost:5000"}</p>
+          <p className="muted">Endpoint: {getOrchestratorUrl()}</p>
           <span className="pill">status: {String(runtime?.status || "unknown")}</span>
+          <div className="muted" style={{ marginTop: 10 }}>
+            last task: {runtime?.last_task || "n/a"}
+          </div>
         </section>
 
         <section className="card">
           <h3>Branch Registry</h3>
-          {managedProjects.map((project) => (
-            <div key={project.key} style={{ marginBottom: 10 }}>
-              <strong>{project.key}</strong>
-              <div className="muted">{project.repo}</div>
-              <span className="pill" style={{ marginRight: 8 }}>
-                {project.branch}
-              </span>
-              <span className="pill">{project.runtime}</span>
-            </div>
-          ))}
+          {managedProjects.map((project) => <BranchCard key={project.key} project={project} />)}
         </section>
+      </div>
+
+      <div style={{ marginTop: 16 }}>
+        <ActionConsole />
       </div>
     </main>
   );
