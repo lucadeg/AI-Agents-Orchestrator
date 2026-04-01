@@ -58,6 +58,8 @@ config/*.local.yaml
 .env
 /ui/frontend/node_modules/
 /ui/frontend/.nuxt/
+/ui/nextaio/node_modules/
+/ui/nextaio/.next/
 
 # Node modules
 node_modules/
