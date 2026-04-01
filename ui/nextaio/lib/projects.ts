@@ -37,3 +37,51 @@ export const managedProjects: ManagedProject[] = [
     ownership: "frontend",
   },
 ];
+
+export const templateProjects: ManagedProject[] = [
+  {
+    key: "template-quarkus-archetype",
+    displayName: "Template - Quarkus Archetype",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/quarkus-archetype",
+    runtime: "java+quarkus",
+    healthPath: "/q/health/ready",
+    ownership: "template",
+  },
+  {
+    key: "template-rust-archetype",
+    displayName: "Template - Rust Archetype",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/rust-archetype",
+    runtime: "rust",
+    healthPath: "/health/ready",
+    ownership: "template",
+  },
+  {
+    key: "template-python-archetype",
+    displayName: "Template - Python Archetype",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/python-archetype",
+    runtime: "python",
+    healthPath: "/health/ready",
+    ownership: "template",
+  },
+  {
+    key: "template-awesome-n8n-templates",
+    displayName: "Template - Awesome n8n Templates",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/awesome-n8n-templates",
+    runtime: "n8n",
+    healthPath: "/healthz",
+    ownership: "template",
+  },
+  {
+    key: "template-flutter-mvvm-template",
+    displayName: "Template - Flutter MVVM",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/flutter-mvvm-template",
+    runtime: "flutter",
+    healthPath: "/",
+    ownership: "template",
+  },
+];

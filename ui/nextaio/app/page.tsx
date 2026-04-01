@@ -1,7 +1,7 @@
 import { RemotionHero } from "../components/RemotionHero";
 import { ActionConsole } from "../components/ActionConsole";
 import { BranchCard } from "../components/BranchCard";
-import { managedProjects } from "../lib/projects";
+import { managedProjects, templateProjects } from "../lib/projects";
 import { fetchRuntimeStatus, getOrchestratorUrl } from "../lib/orchestrator";
 
 export default async function Home() {
@@ -35,6 +35,16 @@ export default async function Home() {
       <div style={{ marginTop: 16 }}>
         <ActionConsole />
       </div>
+
+      <section className="card" style={{ marginTop: 16 }}>
+        <h3>Template Branch Catalog</h3>
+        <p className="muted">
+          Archetype branches available for fast project bootstrap under MVX Apocalypse.
+        </p>
+        {templateProjects.map((project) => (
+          <BranchCard key={project.key} project={project} />
+        ))}
+      </section>
     </main>
   );
 }
