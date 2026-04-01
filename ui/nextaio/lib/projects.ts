@@ -84,4 +84,13 @@ export const templateProjects: ManagedProject[] = [
     healthPath: "/",
     ownership: "template",
   },
+  {
+    key: "template-deerflow-3d-hero",
+    displayName: "Template - Deerflow 3D Hero",
+    repo: "https://github.com/lucadeg/MVX-Apocalypse",
+    branch: "template/deerflow-3d-hero",
+    runtime: "nextjs+python",
+    healthPath: "/health/ready",
+    ownership: "template",
+  },
 ];
